@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Ping Supabase
         run: |
-          curl -s -o /dev/null -w "HTTP %{http_code}\n" \
-            "https://dscbqcqwxekijrhznqvz.supabase.co/rest/v1/rooms?select=id&limit=1" \
-            -H "apikey: sb_publishable_esGiLQzvKS-vp3E2rLOwrg_OSg6yS6z"
+          echo "=== URL ==="
+          echo "https://dscbqcqwxekijrhznqvz.supabase.co/rest/v1/rooms?select=id&limit=1"
+          echo "=== KEY 长度 ==="
+          echo -n "sb_publishable_esGiLQzvKS-vp3E2rLOwrg_OSg6yS6z" | wc -c
+          echo "=== 请求 ==="
+          curl -v "https://dscbqcqwxekijrhznqvz.supabase.co/rest/v1/rooms?select=id&limit=1" \
+            -H "apikey: sb_publishable_esGiLQzvKS-vp3E2rLOwrg_OSg6yS6z" 2>&1 | tail -40
